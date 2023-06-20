@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +25,14 @@ Route::group(['prefix' => 'v1'], function () {
         });
     });
 
+    // PERMISSIONS
+    Route::resource('permissions', PermissionController::class)
+        ->middleware(['auth:sanctum', 'role:admin']);
+
+    // ROLES
+    Route::resource('roles', RoleController::class)
+        ->middleware(['auth:sanctum', 'role:admin'])
+        ->except('destroy');
+
+    // POSTS
 });
