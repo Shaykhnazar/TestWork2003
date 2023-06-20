@@ -33,7 +33,7 @@ class AuthController extends Controller
     public function me(Request $request): UserResource
     {
         $user = $request->user();
-        return new UserResource($user);
+        return new UserResource($user->load('roles'));
     }
 
     /**

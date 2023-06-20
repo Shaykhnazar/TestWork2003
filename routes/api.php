@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,4 +36,16 @@ Route::group(['prefix' => 'v1'], function () {
         ->except('destroy');
 
     // POSTS
+    Route::resource('posts', PostController::class)
+        ->middleware(['auth:sanctum', 'role:admin,editor'])
+        ->except('index', 'show');
+
+    Route::group([
+        'prefix' => 'posts',
+        'as' => 'posts.',
+        'middleware' => ['auth:sanctum', 'role:admin,editor,viewer']
+    ], function () {
+        Route::get('', [PostController::class, 'index']);
+        Route::get('/{post}', [PostController::class, 'show']);
+    });
 });

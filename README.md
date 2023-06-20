@@ -14,3 +14,21 @@ cp .env.example .env
 php artisan key:generate
 php artisan migrate:fresh --seed
 ```
+
+### **User credentials for testing:**
+
+1. **Admin**
+   ```
+    email: admin@admin.com
+    password: password
+   ```
+2. **Editor**
+   ```
+    email: editor@test.com
+    password: password
+   ```
+3. **Viewer**
+   ```
+    email: viewer@test.com
+    password: password
+   ```

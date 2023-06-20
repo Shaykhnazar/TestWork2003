@@ -10,26 +10,41 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        $roles = Role::pluck('id', 'name')->toArray();
-        $roleViewerId = $roles[Role::VIEWER];
-        $roleEditorId = $roles[Role::EDITOR];
+        $roleIds = Role::pluck('id', 'name')->toArray();
+        $roleViewerId = $roleIds[Role::VIEWER];
+        $roleEditorId = $roleIds[Role::EDITOR];
 
-        // Create 1 admin
-        $admin = User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-        ]);
-        $admin->roles()->sync($roles);
+        $testUsers = [
+            [
+                'name' => 'Admin',
+                'email' => 'admin@admin.com',
+                'password' => \Hash::make('password'),
+                'role_ids_to_sync' => $roleIds
+            ],
+            [
+                'name' => 'Editor',
+                'email' => 'editor@test.com',
+                'password' => \Hash::make('password'),
+                'role_ids_to_sync' => [$roleEditorId, $roleViewerId]
+            ],
+            [
+                'name' => 'Viewer',
+                'email' => 'viewer@test.com',
+                'password' => \Hash::make('password'),
+                'role_ids_to_sync' => [$roleViewerId]
+            ],
+        ];
 
-        // Create 2 editor
-        User::factory(2)->create()->each(function ($user) use ($roleEditorId) {
-            $user->roles()->sync([$roleEditorId]);
-        });
+        foreach ($testUsers as $data) {
+            $user = User::query()->firstOrCreate(
+                ['email' => $data['email']], \Arr::except($data, 'role_ids_to_sync')
+            );
+            $user->syncRoles($data['role_ids_to_sync']);
+        }
 
-        // Create 10 viewer
+        // Create 10 random viewers
         User::factory(10)->create()->each(function ($user) use ($roleViewerId) {
             $user->roles()->sync([$roleViewerId]);
         });
-
     }
 }

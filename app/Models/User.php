@@ -57,4 +57,9 @@ class User extends Authenticatable
 
         return $this->roles->whereIn('name', $roles)->first();
     }
+
+    public function syncRoles(array $roles): void
+    {
+        $this->roles()->sync($roles);
+    }
 }
