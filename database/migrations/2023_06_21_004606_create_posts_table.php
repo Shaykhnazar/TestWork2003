@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->unique()->comment('Название');
+            $table->string('title')->comment('Название');
             $table->text('content')->comment('Содержание');
 
             $table->unsignedBigInteger('created_by')->comment('Пользователь, который его создал');
