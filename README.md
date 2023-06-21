@@ -32,3 +32,9 @@ php artisan migrate:fresh --seed
     email: viewer@test.com
     password: password
    ```
+
+## Testing
+* To run the tests you need to run the command:
+```shell
+php artisan test
+```
