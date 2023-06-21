@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "490f72a0-6ff8-40d6-b808-9a3b86b6f50d",
 		"name": "TestWork2003",
+		"description": "После логина скопировайте полученный **токен** и вставьте на инпут `Token` находящийся в вкладке `Authorization` корневую папку.  \nПосле этого вы стали авторизованным.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "12016786"
 	},
@@ -238,7 +239,13 @@
 					"name": "index",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/v1/permissions?include=roles",
 							"host": [
@@ -263,7 +270,13 @@
 					"name": "create",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"name\": \"Test permission log\",\r\n    \"description\": \"Test Desc log\"\r\n    // \"roles\": [3]\r\n}",
@@ -291,7 +304,13 @@
 					"name": "update",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"name\": \"Test permission\",\r\n    \"description\": \"Test permission description edited\"\r\n}",
@@ -323,7 +342,13 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -352,7 +377,13 @@
 					"name": "delete",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -386,7 +417,13 @@
 					"name": "index",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/v1/roles?include=permissions",
 							"host": [
@@ -408,10 +445,16 @@
 					"response": []
 				},
 				{
-					"name": "create",
+					"name": "create role and assign permissions",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"name\": \"Test role with permission 222\",\r\n    \"description\": \"Test role with permissioncadfss Desc aas\",\r\n    \"permissions\": [4,5,6]\r\n}",
@@ -468,10 +511,16 @@
 					]
 				},
 				{
-					"name": "update",
+					"name": "update role and sync permissions",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"name\": \"Test role with permissions update 2\",\r\n    \"description\": \"Test role with permissions Desc update\",\r\n    \"permissions\": [4,5]\r\n}",
@@ -503,7 +552,13 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -532,7 +587,13 @@
 					"name": "delete",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -566,7 +627,13 @@
 					"name": "index",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{base_url}}/api/v1/posts",
 							"host": [
@@ -585,7 +652,13 @@
 					"name": "create",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"title\": \"Test post 2 \",\r\n    \"content\": \"Test post sadjncfsakdc\"\r\n}",
@@ -645,7 +718,13 @@
 					"name": "update",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"title\": \"Test post update 2\",\r\n    \"content\": \"Test post asdcdcdcddcdcd\"\r\n}",
@@ -677,7 +756,13 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -706,7 +791,13 @@
 					"name": "delete",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -739,7 +830,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "5|8Mgr7akyPCIL3Ela3mTjXotPpp5jk8K4yVZqHqqB",
+				"value": "1|fof9NhKI9ciK1fiZYDyy2pbyizc3imTzwLNvQI2F",
 				"type": "string"
 			}
 		]
