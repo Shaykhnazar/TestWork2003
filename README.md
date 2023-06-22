@@ -38,3 +38,6 @@ php artisan migrate:fresh --seed
 ```shell
 php artisan test
 ```
+
+## Postman collection
+[TestWork2003.postman_collection.json](TestWork2003.postman_collection.json)

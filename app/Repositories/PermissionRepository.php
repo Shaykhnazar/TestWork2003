@@ -8,13 +8,10 @@ use App\Repositories\Interfaces\BaseRepositoryInterface;
 class PermissionRepository implements BaseRepositoryInterface
 {
     /**
-     * @var Permission
+     * @param Permission $permission
      */
-    protected Permission $permission;
-
-    public function __construct(Permission $permission)
+    public function __construct(protected Permission $permission)
     {
-        $this->permission = $permission;
     }
 
     public function getAll($request)

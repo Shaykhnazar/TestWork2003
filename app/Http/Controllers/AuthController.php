@@ -39,12 +39,14 @@ class AuthController extends Controller
     /**
      *  Выйти из системы
      *
+     * @param Request $request
+     * @param AuthService $authService
      * @return JsonResponse
      */
-    public function logout(Request $request, AuthService $authService)
+    public function logout(Request $request, AuthService $authService): JsonResponse
     {
         $authService->logout($request);
-        return response()->json(['message' => 'Successfully logged out']);
+        return $this->jsonResponse(message: 'Successfully logged out');
     }
 
 }

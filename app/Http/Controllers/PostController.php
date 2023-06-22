@@ -6,38 +6,37 @@ use App\Http\Requests\PostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use App\Services\PostService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class PostController extends Controller
 {
-    protected PostService $postService;
-
-    public function __construct(PostService $postService)
+    public function __construct(protected PostService $postService)
     {
-        $this->postService = $postService;
     }
 
-    public function index(Request $request)
+    public function index(Request $request): AnonymousResourceCollection
     {
         return PostResource::collection($this->postService->getAll($request));
     }
 
-    public function store(PostRequest $request)
+    public function store(PostRequest $request): PostResource
     {
         return new PostResource($this->postService->save($request->validated()));
     }
 
-    public function show(Post $post)
+    public function show(Post $post): PostResource
     {
         return new PostResource($post);
     }
 
-    public function update(PostRequest $request, Post $post)
+    public function update(PostRequest $request, Post $post): PostResource
     {
         return new PostResource($this->postService->update($request->validated(), $post));
     }
 
-    public function destroy(Post $post)
+    public function destroy(Post $post): JsonResponse
     {
         $this->postService->delete($post);
         return $this->jsonResponse(message: 'Ok');

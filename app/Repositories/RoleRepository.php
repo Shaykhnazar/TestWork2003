@@ -7,14 +7,12 @@ use App\Repositories\Interfaces\BaseRepositoryInterface;
 
 class RoleRepository implements BaseRepositoryInterface
 {
-    /**
-     * @var Role
-     */
-    protected Role $role;
 
-    public function __construct(Role $role)
+    /**
+     * @param Role $role
+     */
+    public function __construct(protected Role $role)
     {
-        $this->role = $role;
     }
 
     public function getAll($request)

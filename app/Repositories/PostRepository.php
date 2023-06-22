@@ -6,11 +6,12 @@ use App\Repositories\Interfaces\BaseRepositoryInterface;
 
 class PostRepository implements BaseRepositoryInterface
 {
-    protected Post $post;
 
-    public function __construct(Post $post)
+    /**
+     * @param Post $post
+     */
+    public function __construct(protected Post $post)
     {
-        $this->post = $post;
     }
 
     public function getAll($request)
